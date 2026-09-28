@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibadullah | Solution Architect & Software Engineer</title>
+  <meta name="description" content="Portfolio of Ibadullah - Computer Science student at GU Tech, aspiring Solution Architect, skilled in C, C++, Python, OOP, and modern software engineering.">
+  
+  <!-- Favicon Monogram -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Portfolio Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Light Circles -->
+  <div class="ambient-glow" aria-hidden="true">
+    <div class="ambient-circle ambient-circle-1"></div>
+    <div class="ambient-circle ambient-circle-2"></div>
+    <div class="ambient-circle ambient-circle-3"></div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-badge" id="nav-short-name">IBA</span>
+        <span class="nav-brand-text" id="nav-brand-full">Ibadullah</span>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         HERO SECTION
+         ===================================================================== -->
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text Details -->
+          <div class="hero-content">
+            <div class="hero-status-pill reveal">
+              <span class="pulse-dot"></span>
+              <span id="hero-status-text">BSCS Student at GU Tech</span>
+            </div>
+
+            <h1 class="hero-title reveal">
+              Hi, I'm <span class="gradient-text" id="hero-name">Ibadullah</span>
+            </h1>
+
+            <p class="hero-headline reveal" id="hero-headline">
+              Focused on becoming a complete solution architect.
+            </p>
+
+            <p class="hero-summary reveal" id="hero-summary">
+              Computer Science student based in Karachi, Pakistan, currently pursuing a BSCS at GU Tech. Passionate about core programming logic, OOP, and building scalable software solutions.
+            </p>
+
+            <div class="hero-cta-group reveal">
+              <a href="#projects" class="btn btn-primary">
+                <span>View Projects</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <span>Get In Touch</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </a>
+            </div>
+
+            <div class="hero-socials reveal" id="hero-socials">
+              <!-- Dynamically populated from resume.json profiles -->
+            </div>
+          </div>
+
+          <!-- Hero Right: Interactive Code/Visual Showcase -->
+          <div class="hero-visual reveal">
+            <div class="terminal-card">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <span class="terminal-title">architect.profile.json</span>
+              </div>
+              <div class="terminal-body">
+                <span class="code-comment">// Core Philosophy &amp; Architecture</span><br>
+                <span class="code-keyword">const</span> architect = {<br>
+                &nbsp;&nbsp;<span class="code-prop">name</span>: <span class="code-str">"Ibadullah"</span>,<br>
+                &nbsp;&nbsp;<span class="code-prop">vision</span>: <span class="code-str">"Scalable &amp; Clean Systems"</span>,<br>
+                &nbsp;&nbsp;<span class="code-prop">stack</span>: [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"C"</span>, <span class="code-str">"C++"</span>, <span class="code-str">"Python"</span>, <span class="code-str">"JavaScript"</span><br>
+                &nbsp;&nbsp;],<br>
+                &nbsp;&nbsp;<span class="code-prop">coreFocus</span>: [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"Object-Oriented Programming"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"Data Structures &amp; Algorithms"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"System Design"</span><br>
+                &nbsp;&nbsp;],<br>
+                &nbsp;&nbsp;<span class="code-prop">status</span>: <span class="code-str">"Building the future 🚀"</span><br>
+                };
+              </div>
+            </div>
+
+            <!-- Floating Stat Badges -->
+            <div class="floating-stat-badge stat-badge-1">
+              <div class="stat-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="stat-content">
+                <h5>Clean Architecture</h5>
+                <p>OOP &amp; Modularity</p>
+              </div>
+            </div>
+
+            <div class="floating-stat-badge stat-badge-2">
+              <div class="stat-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="stat-content">
+                <h5>BSCS Candidate</h5>
+                <p>GU Tech 2026-2030</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ABOUT & STRENGTHS SECTION
+         ===================================================================== -->
+    <section id="about" class="section">
+      <div class="container">
+        
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-user"></i> About Me</span>
+          <h2 class="section-title">Driven by Logic, Focused on Architecture</h2>
+          <p class="section-subtitle">A glimpse into my journey, core strengths, and engineering philosophy.</p>
+        </div>
+
+        <div class="about-grid">
+          
+          <!-- About Card -->
+          <div class="about-card reveal">
+            <div id="about-intro-container">
+              <!-- Dynamically populated -->
+            </div>
+
+            <div class="about-details-list">
+              <div>
+                <div class="detail-item-title">Location</div>
+                <div class="detail-item-val" id="about-location">Karachi, Pakistan</div>
+              </div>
+              <div>
+                <div class="detail-item-title">Email</div>
+                <div class="detail-item-val" id="about-email">ibadullahibad27@gmail.com</div>
+              </div>
+              <div>
+                <div class="detail-item-title">Role</div>
+                <div class="detail-item-val" id="about-role">BSCS Student at GU Tech</div>
+              </div>
+              <div>
+                <div class="detail-item-title">Language Proficiency</div>
+                <div class="detail-item-val">English (Fluent), Urdu (Native)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strengths Grid -->
+          <div class="strengths-container">
+            <h3 class="reveal">Core Strengths</h3>
+            <div class="strengths-grid" id="strengths-grid">
+              <!-- Dynamically populated from resume.json about.strengths -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SKILLS SECTION
+         ===================================================================== -->
+    <section id="skills" class="section">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-code"></i> Technical Arsenal</span>
+          <h2 class="section-title">Skills &amp; Capabilities</h2>
+          <p class="section-subtitle">Categorized programming technologies, structural paradigms, and collaborative soft skills.</p>
+        </div>
+
+        <div class="skills-category-grid" id="skills-container">
+          <!-- Dynamically populated from resume.json skills -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         EXPERIENCE / WORK HISTORY SECTION
+         ===================================================================== -->
+    <section id="experience" class="section">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-briefcase"></i> Career Journey</span>
+          <h2 class="section-title">Work Experience</h2>
+          <p class="section-subtitle">Hands-on leadership roles, freelance initiatives, and real-world system contributions.</p>
+        </div>
+
+        <div class="experience-timeline" id="work-timeline">
+          <!-- Dynamically populated from resume.json work -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROJECTS SECTION
+         ===================================================================== -->
+    <section id="projects" class="section">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-diagram-project"></i> Portfolio Works</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">A showcase of software systems, applications, and modern web platforms.</p>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- Dynamically populated from resume.json projects -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         EDUCATION, CERTIFICATES & LANGUAGES
+         ===================================================================== -->
+    <section id="education" class="section">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-graduation-cap"></i> Academic Background</span>
+          <h2 class="section-title">Education &amp; Credentials</h2>
+          <p class="section-subtitle">Formal studies, certifications, and communication proficiencies.</p>
+        </div>
+
+        <div class="credentials-layout">
+          
+          <!-- Education Column -->
+          <div>
+            <h3 class="credentials-subhead reveal">
+              <i class="fa-solid fa-school gradient-text"></i> Education Milestones
+            </h3>
+            <div class="edu-timeline" id="education-timeline">
+              <!-- Dynamically populated from resume.json education -->
+            </div>
+          </div>
+
+          <!-- Certifications & Languages Column -->
+          <div class="side-credentials-box">
+            <div>
+              <h3 class="credentials-subhead reveal">
+                <i class="fa-solid fa-certificate gradient-text"></i> Certifications
+              </h3>
+              <div class="cert-list" id="cert-list">
+                <!-- Dynamically populated from resume.json certificates -->
+              </div>
+            </div>
+
+            <div>
+              <h3 class="credentials-subhead reveal">
+                <i class="fa-solid fa-globe gradient-text"></i> Languages
+              </h3>
+              <div class="lang-list" id="lang-list">
+                <!-- Dynamically populated from resume.json languages -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONTACT SECTION
+         ===================================================================== -->
+    <section id="contact" class="section">
+      <div class="container">
+
+        <div class="contact-wrapper reveal">
+          <div class="contact-grid">
+            
+            <!-- Contact Left -->
+            <div>
+              <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> Get In Touch</span>
+              <h2 class="contact-headline">Let's build something remarkable together.</h2>
+              <p class="contact-subtext">
+                Whether you have an upcoming project, want to discuss software architecture, or simply wish to say hello, feel free to reach out.
+              </p>
+
+              <div class="contact-cards-list">
+                <!-- Email Item -->
+                <div class="contact-info-card">
+                  <div class="contact-card-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div class="contact-card-info">
+                    <h4>Direct Email</h4>
+                    <a id="contact-email-text" href="mailto:ibadullahibad27@gmail.com">ibadullahibad27@gmail.com</a>
+                  </div>
+                  <button id="copy-email-btn" class="copy-email-btn" title="Copy Email to Clipboard">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Copy</span>
+                  </button>
+                </div>
+
+                <!-- Location Item -->
+                <div class="contact-info-card">
+                  <div class="contact-card-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div class="contact-card-info">
+                    <h4>Location</h4>
+                    <p id="contact-location-text">Karachi, Pakistan</p>
+                  </div>
+                </div>
+
+                <!-- Availability Item -->
+                <div class="contact-info-card">
+                  <div class="contact-card-icon">
+                    <i class="fa-solid fa-clock"></i>
+                  </div>
+                  <div class="contact-card-info">
+                    <h4>Availability</h4>
+                    <p id="contact-avail-text">Open to exciting collaborations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Right: Quick Message Form -->
+            <div class="quick-message-form">
+              <form id="contact-form">
+                <div class="form-group">
+                  <label for="form-name">Your Name</label>
+                  <input type="text" id="form-name" class="form-input" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                  <label for="form-email">Your Email</label>
+                  <input type="email" id="form-email" class="form-input" placeholder="e.g. john@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="form-message">Message</label>
+                  <textarea id="form-message" class="form-input" rows="4" placeholder="Hi Ibadullah, I'd like to collaborate..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  <span>Send Message</span>
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="brand-badge">IBA</span>
+          <span id="footer-name">Ibadullah</span>
+        </div>
+
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> All rights reserved. Crafted with precision &amp; modern standards.
+        </div>
+
+        <div class="footer-socials" id="footer-socials">
+          <!-- Dynamically populated -->
+        </div>
+
+        <a href="#hero" class="scroll-top-btn" title="Back to top" aria-label="Back to top">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- Main JavaScript Engine -->
+  <script src="js/main.js"></script>
+</body>
+</html>
