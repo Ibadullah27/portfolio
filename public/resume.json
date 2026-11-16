@@ -1,0 +1,145 @@
+{
+  "basics": {
+    "name": "Ibadullah",
+    "shortName": "IBA",
+    "label": "dedicated student in gutec",
+    "headline": "I study full-time and am focused on becoming a complete solution architect.",
+    "summary": "Computer Science student based in Karachi, Pakistan, currently pursuing a BSCS at GU Tech. Passionate about core programming logic, OOP, and building scalable software solutions. A dedicated team player and recognized leader with a strong foundation in C, C++, and Python.",
+    "location": {
+      "country": "Pakistan",
+      "countryCode": "PK",
+      "region": "Karachi"
+    },
+    "email": "ibadullahibad27@gmail.com",
+    "availability": "Currently at GU Tech since April 2026",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "ibadullah",
+        "url": "https://www.linkedin.com/in/ibadullah-",
+        "icon": "fa-brands fa-linkedin-in"
+      },
+      {
+        "network": "GitHub",
+        "username": "ibadullah",
+        "url": "https://github.com/Ibadullah27?tab=repositories",
+        "icon": "fa-brands fa-github"
+      }
+    ]
+  },
+  "about": {
+    "intro": [
+      "My background in Computer Science spans from Matric (C) to Intermediate (C++), complemented by independent learning in Python.",
+      "I am deeply interested in architectural design and clean code principles."
+    ],
+    "strengths": [
+      "Core programming logic",
+      "Object-Oriented Programming (OOP)",
+      "Leadership & Responsibility",
+      "Quick Learner"
+    ]
+  },
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "items": ["C", "C++", "Python", "JavaScript"]
+    },
+    {
+      "category": "Core Concepts",
+      "items": ["OOP", "Data Structures", "Algorithms", "Database Systems"]
+    },
+    {
+      "category": "Soft Skills",
+      "items": ["Leadership", "Team Collaboration", "Problem Solving"]
+    }
+  ],
+  "work": [
+    {
+      "company": "GU Tech",
+      "position": "BSCS Student / Tech Lead (Academic Projects)",
+      "website": "https://gutech.edu.pk",
+      "startDate": "2026-01",
+      "endDate": "Present",
+      "summary": "Leading academic group projects and focusing on advanced software engineering principles.",
+      "highlights": [
+        "Collaborated on system design for local community projects.",
+        "Maintained high academic standing in core CS modules."
+      ]
+    },
+    {
+      "company": "Freelance",
+      "position": "Junior Developer",
+      "startDate": "2024-07",
+      "endDate": "2025-12",
+      "summary": "Assisted in small-scale Python automation scripts and local business landing pages.",
+      "highlights": [
+        "Developed automated data entry tools using Python.",
+        "Designed responsive layouts for local clients."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Personal Portfolio",
+      "description": "A React portfolio with a responsive blog and private publishing dashboard.",
+      "highlights": ["Dynamic JSON Parsing", "Glassmorphism UI", "Intersection Observer Animations"],
+      "keywords": ["JavaScript", "CSS3", "HTML5"],
+      "url": "#"
+    },
+    {
+      "name": "Inventory Management System",
+      "description": "A C++ based console application implementing OOP principles for managing local shop inventories.",
+      "highlights": ["File I/O", "Class Inheritance", "Data Persistence"],
+      "keywords": ["C++", "OOP"],
+      "url": "#"
+    }
+  ],
+  "education": [
+    {
+      "institution": "GU Tech",
+      "area": "Computer Science",
+      "studyType": "BSCS",
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-01"
+    },
+    {
+      "institution": "govt.Dehli college",
+      "area": "pre-engneering",
+      "studyType": "Intermediate",
+      "details": [
+        "Object-Oriented Programming",
+        "Database Systems"
+      ],
+      "startDate": "2022-08-01",
+      "endDate": "2024-06-01"
+    },
+    {
+      "institution": "usman public school system",
+      "area": "Computer Science",
+      "studyType": "Matric",
+      "startDate": "2022-01-01",
+      "endDate": "2023-12-01"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "IELTS",
+      "issuer": "British Council",
+      "url": "https://www.britishcouncil.pk/"
+    },
+    {
+      "name": "Continental Chef",
+      "issuer": "Pakistan Institute of Tourism & Hotel Management (PITHM)",
+      "url": "https://www.pithm.edu.pk/"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    },
+    {
+      "language": "Urdu",
+      "fluency": "Native"
+    }
+  

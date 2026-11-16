@@ -1,8 +1,20 @@
-/**
- * Portfolio Dynamic Engine
+import { initPortfolio3D } from './portfolio-3d.js';
+
+export function initLegacyPortfolio() {
+  initPortfolio3D();
+  initTheme();
+  initScrollProgress();
+  initMobileMenu();
+  initHeroMotion();
+  initBackToTop();
+  initMagneticButtons();
+  initSectionTransitions();
+  loadPortfolioData();
+  initContactForm();
+}
+ /* Portfolio Dynamic Engine
  * Fetches resume.json, dynamically builds DOM, manages themes & micro-interactions.
  */
-
 // Fallback data in case the page is opened directly via file:// protocol where fetch is restricted by browser CORS
 const FALLBACK_RESUME = {
   "basics": {
@@ -151,14 +163,6 @@ const FALLBACK_RESUME = {
   ]
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
-  initScrollProgress();
-  initMobileMenu();
-  loadPortfolioData();
-  initContactForm();
-});
-
 /**
  * Loads resume.json data using fetch() with graceful fallback
  */
@@ -182,6 +186,7 @@ async function loadPortfolioData() {
   renderSkills(data.skills);
   renderWork(data.work);
   renderProjects(data.projects);
+  initProjectSpotlight();
   renderEducation(data.education);
   renderCertificates(data.certificates);
   renderLanguages(data.languages);
@@ -190,6 +195,7 @@ async function loadPortfolioData() {
   // Initialize interactive observers after DOM is populated
   initScrollSpy();
   initRevealAnimations();
+  initTerminalTyping();
 }
 
 /**
@@ -358,8 +364,8 @@ function renderSkills(skills) {
     
     const iconClass = categoryIcons[cat.category] || "fa-solid fa-layer-group";
     
-    const tagsHtml = cat.items.map(item => `
-      <span class="skill-pill">
+    const tagsHtml = cat.items.map((item, index) => `
+      <span class="skill-pill" style="--chip-index:${index}">
         <i class="fa-solid fa-check"></i>
         <span>${escapeHTML(item)}</span>
       </span>
@@ -704,18 +710,26 @@ function initMobileMenu() {
   const navLinks = document.getElementById('nav-links');
 
   if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      const isOpen = navLinks.classList.contains('open');
+    const setMenuOpen = isOpen => {
+      navLinks.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
       toggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    };
+    toggle.addEventListener('click', () => {
+      setMenuOpen(!navLinks.classList.contains('open'));
     });
 
     // Close menu when clicking any nav link
     navLinks.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        setMenuOpen(false);
       });
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && navLinks.classList.contains('open')) {
+        setMenuOpen(false);
+        toggle.focus();
+      }
     });
   }
 }
@@ -751,13 +765,18 @@ function initScrollSpy() {
  * Scroll Reveal Animation via IntersectionObserver
  */
 function initRevealAnimations() {
+  if (window.revealObserver) {
+    document.querySelectorAll('.reveal:not([data-reveal-observed])').forEach(el => observeReveal(el));
+    return;
+  }
   const revealElements = document.querySelectorAll('.reveal');
-
-  const revealObserver = new IntersectionObserver((entries, obs) => {
+  window.revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
+        if (entry.target.classList.contains('edu-card')) entry.target.parentElement.classList.add('active');
         obs.unobserve(entry.target);
+        entry.target.removeAttribute('data-reveal-observed');
       }
     });
   }, {
@@ -765,7 +784,107 @@ function initRevealAnimations() {
     rootMargin: '0px 0px -40px 0px'
   });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  revealElements.forEach(observeReveal);
+}
+
+function observeReveal(el) {
+  if (!window.revealObserver || el.dataset.revealObserved) return;
+  el.dataset.revealObserved = 'true';
+  window.revealObserver.observe(el);
+}
+
+// Hero tilt and return-to-top use pointer/scroll events only on capable devices.
+function initHeroMotion() {
+  const card = document.querySelector('.terminal-card');
+  if (card && matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const visual = card.closest('.hero-visual');
+    visual.addEventListener('pointermove', event => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      card.style.setProperty('--tilt-x', `${-y * 4}deg`);
+      card.style.setProperty('--tilt-y', `${x * 4}deg`);
+    });
+    visual.addEventListener('pointerleave', () => {
+      card.style.setProperty('--tilt-x', '0deg');
+      card.style.setProperty('--tilt-y', '0deg');
+    });
+  }
+}
+
+function initTerminalTyping() {
+  const body = document.querySelector('.terminal-body');
+  if (!body || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const template = document.createElement('template');
+  template.innerHTML = body.innerHTML;
+  const walker = document.createTreeWalker(template.content, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  let charIndex = 0;
+  textNodes.forEach(textNode => {
+    const fragment = document.createDocumentFragment();
+    [...textNode.textContent].forEach(character => {
+      const span = document.createElement('span');
+      span.className = 'terminal-char';
+      span.textContent = character;
+      span.style.setProperty('--char-delay', `${450 + charIndex * 12}ms`);
+      fragment.appendChild(span);
+      charIndex += 1;
+    });
+    textNode.replaceWith(fragment);
+  });
+  body.replaceChildren(template.content, Object.assign(document.createElement('span'), { className: 'typing-cursor', ariaHidden: 'true' }));
+}
+
+function initBackToTop() {
+  const button = document.querySelector('.scroll-top-btn');
+  if (!button) return;
+  const update = () => button.classList.toggle('visible', window.scrollY > 420);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+// Gentle pointer pull for buttons on desktop; CSS owns the visible hover style.
+function initMagneticButtons() {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.btn, .copy-email-btn').forEach(button => {
+    button.addEventListener('pointermove', event => {
+      const rect = button.getBoundingClientRect();
+      button.style.setProperty('--mag-x', `${(event.clientX - rect.left - rect.width / 2) * .08}px`);
+      button.style.setProperty('--mag-y', `${(event.clientY - rect.top - rect.height / 2) * .08}px`);
+    });
+    button.addEventListener('pointerleave', () => {
+      button.style.setProperty('--mag-x', '0px');
+      button.style.setProperty('--mag-y', '0px');
+    });
+  });
+}
+
+// Soft pointer-following highlight gives project cards a little depth on desktop.
+function initProjectSpotlight() {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('pointermove', event => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--spot-x', `${event.clientX - rect.left}px`);
+      card.style.setProperty('--spot-y', `${event.clientY - rect.top}px`);
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.removeProperty('--spot-x');
+      card.style.removeProperty('--spot-y');
+    });
+  });
+}
+
+// Internal links get a short content fade while native smooth scrolling handles movement.
+function initSectionTransitions() {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.body.classList.add('section-transitioning');
+      setTimeout(() => document.body.classList.remove('section-transitioning'), 420);
+    });
+  });
 }
 
 /**
@@ -774,18 +893,26 @@ function initRevealAnimations() {
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('form-name').value;
       const email = document.getElementById('form-email').value;
       const message = document.getElementById('form-message').value;
-
-      // Construct mailto link
-      const mailtoLink = `mailto:ibadullahibad27@gmail.com?subject=Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nSender Email: ' + email)}`;
-      
-      window.location.href = mailtoLink;
-      showToast('Opening your email client...');
-      form.reset();
+      const submitButton = form.querySelector('[type="submit"]');
+      submitButton.disabled = true;
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+        if (!response.ok) throw new Error('Unable to send your message right now.');
+        showToast('Message sent successfully.');
+        form.reset();
+      } catch (error) {
+        showToast(error.message || 'Message could not be sent. Please email directly.');
+      } finally {
+        submitButton.disabled = false;
+      }
     });
   }
 }

@@ -6,30 +6,30 @@
 /* --- CSS Variables & Theme Tokens --- */
 :root {
   /* Color Palette - Dark Theme (Default) */
-  --bg-base: #07090e;
-  --bg-surface: #0e131f;
-  --bg-surface-elevated: #141b2d;
-  --bg-surface-hover: #1b243b;
-  --bg-glass: rgba(14, 19, 31, 0.72);
-  --bg-glass-card: rgba(20, 27, 45, 0.55);
+  --bg-base: #050806;
+  --bg-surface: #0b100d;
+  --bg-surface-elevated: #111a14;
+  --bg-surface-hover: #19251c;
+  --bg-glass: rgba(11, 16, 13, 0.76);
+  --bg-glass-card: rgba(17, 26, 20, 0.58);
   
   --border-subtle: rgba(255, 255, 255, 0.07);
   --border-medium: rgba(255, 255, 255, 0.12);
-  --border-highlight: rgba(99, 102, 241, 0.35);
+  --border-highlight: rgba(34, 197, 94, 0.35);
 
   --text-main: #f1f5f9;
   --text-muted: #94a3b8;
   --text-faint: #64748b;
-  --text-inverse: #07090e;
+  --text-inverse: #050806;
 
   /* Accent Gradients & Colors */
-  --accent-primary: #6366f1;       /* Indigo */
-  --accent-secondary: #06b6d4;     /* Cyan */
-  --accent-tertiary: #a855f7;      /* Violet */
+  --accent-primary: #22c55e;       /* Green */
+  --accent-secondary: #10b981;     /* Emerald */
+  --accent-tertiary: #4ade80;      /* Mint */
   --accent-success: #10b981;       /* Emerald */
   
-  --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #a855f7 100%);
-  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.18) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 80%);
+  --gradient-accent: linear-gradient(135deg, #22c55e 0%, #10b981 50%, #4ade80 100%);
+  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.18) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 80%);
   --gradient-card-border: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02));
   
   /* Typography */
@@ -41,7 +41,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
-  --shadow-accent: 0 0 25px rgba(99, 102, 241, 0.28);
+  --shadow-accent: 0 0 25px rgba(34, 197, 94, 0.28);
   --glow-pill: 0 0 15px rgba(16, 185, 129, 0.25);
 
   /* Layout & Transitions */
@@ -67,18 +67,18 @@
 
   --border-subtle: rgba(0, 0, 0, 0.07);
   --border-medium: rgba(0, 0, 0, 0.12);
-  --border-highlight: rgba(99, 102, 241, 0.4);
+  --border-highlight: rgba(34, 197, 94, 0.4);
 
   --text-main: #0f172a;
   --text-muted: #475569;
   --text-faint: #94a3b8;
   --text-inverse: #ffffff;
 
-  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 80%);
+  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.04) 50%, transparent 80%);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
-  --shadow-accent: 0 0 25px rgba(99, 102, 241, 0.2);
+  --shadow-accent: 0 0 25px rgba(34, 197, 94, 0.2);
 }
 
 /* --- Base & Reset Styles --- */
@@ -104,6 +104,20 @@ body {
   transition: background-color var(--transition-base), color var(--transition-base);
   position: relative;
   min-height: 100vh;
+}
+
+#canvas-3d-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#canvas-3d-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Background Ambient Lighting Effect */
@@ -227,10 +241,10 @@ ul {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent-secondary);
-  background: rgba(6, 182, 212, 0.1);
+  background: rgba(16, 185, 129, 0.1);
   padding: 0.35rem 0.9rem;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(6, 182, 212, 0.25);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   margin-bottom: 1rem;
 }
 
@@ -294,7 +308,7 @@ ul {
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 800;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.35);
 }
 
 .nav-brand-text {
@@ -484,7 +498,7 @@ ul {
 .btn-primary {
   background: var(--gradient-accent);
   color: #ffffff;
-  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 18px rgba(34, 197, 94, 0.35);
   position: relative;
   overflow: hidden;
 }
@@ -502,7 +516,7 @@ ul {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.45);
+  box-shadow: 0 6px 25px rgba(34, 197, 94, 0.45);
 }
 
 .btn-primary:hover::before {
@@ -608,10 +622,10 @@ ul {
   line-height: 1.7;
 }
 
-.code-keyword { color: #f472b6; }
-.code-prop { color: #38bdf8; }
+.code-keyword { color: #86efac; }
+.code-prop { color: #34d399; }
 .code-str { color: #4ade80; }
-.code-arr { color: #fbbf24; }
+.code-arr { color: #a3e635; }
 .code-comment { color: var(--text-faint); font-style: italic; }
 
 /* Interactive Floating Stat Badges */
@@ -644,7 +658,7 @@ ul {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(99, 102, 241, 0.15);
+  background: rgba(34, 197, 94, 0.15);
   color: var(--accent-primary);
   display: flex;
   align-items: center;
@@ -757,7 +771,7 @@ ul {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: rgba(6, 182, 212, 0.12);
+  background: rgba(16, 185, 129, 0.12);
   color: var(--accent-secondary);
   display: flex;
   align-items: center;
@@ -799,7 +813,7 @@ ul {
   background: var(--accent-primary);
   border-color: var(--accent-primary);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);
 }
 
 .skills-category-grid {
@@ -836,7 +850,7 @@ ul {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(34, 197, 94, 0.12);
   color: var(--accent-primary);
   display: flex;
   align-items: center;
@@ -874,7 +888,7 @@ ul {
   background: var(--bg-surface-hover);
   color: var(--accent-secondary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
 }
 
 /* ==========================================================================
@@ -965,8 +979,8 @@ ul {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--accent-tertiary);
-  background: rgba(168, 85, 247, 0.1);
-  border: 1px solid rgba(168, 85, 247, 0.25);
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.25);
   padding: 0.3rem 0.85rem;
   border-radius: var(--radius-full);
 }
@@ -1026,7 +1040,7 @@ ul {
 
 .project-banner {
   height: 180px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.15));
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.15));
   position: relative;
   display: flex;
   align-items: center;
@@ -1046,7 +1060,7 @@ ul {
 .project-icon-large {
   font-size: 3rem;
   color: var(--accent-secondary);
-  filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.4));
+  filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.4));
   transition: transform var(--transition-base);
 }
 
@@ -1114,10 +1128,10 @@ ul {
   font-family: var(--font-mono);
   font-size: 0.775rem;
   color: var(--accent-primary);
-  background: rgba(99, 102, 241, 0.08);
+  background: rgba(34, 197, 94, 0.08);
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
 .project-links {
@@ -1327,7 +1341,7 @@ ul {
   right: 0;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -1378,7 +1392,7 @@ ul {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(34, 197, 94, 0.12);
   color: var(--accent-primary);
   display: flex;
   align-items: center;
@@ -1459,7 +1473,7 @@ ul {
 
 .form-input:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 
 textarea.form-input {
@@ -1523,6 +1537,122 @@ textarea.form-input {
   border-color: var(--accent-primary);
   transform: translateY(-3px);
 }
+
+/* Portrait badge and subtle entrance choreography for the existing hero. */
+.hero-visual { isolation: isolate; }
+.hero-portrait {
+  position: absolute;
+  z-index: 2;
+  width: clamp(104px, 14vw, 160px);
+  height: clamp(104px, 14vw, 160px);
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 50%;
+  right: -18px;
+  bottom: 24px;
+  border: 3px solid var(--bg-surface-elevated);
+  box-shadow: var(--shadow-accent);
+  animation: portrait-arrive .7s .7s both cubic-bezier(.16,1,.3,1);
+}
+@keyframes portrait-arrive { from { opacity: 0; transform: translateY(12px) scale(.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.hero-content > .reveal:nth-child(1) { transition-delay: .05s; }
+.hero-content > .reveal:nth-child(2) { transition-delay: .15s; }
+.hero-content > .reveal:nth-child(3) { transition-delay: .25s; }
+.hero-content > .reveal:nth-child(4) { transition-delay: .35s; }
+.hero-content > .reveal:nth-child(5) { transition-delay: .45s; }
+.hero-content > .reveal:nth-child(6) { transition-delay: .55s; }
+.terminal-card { transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
+.terminal-card:hover { transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-4px); }
+.terminal-typed { white-space: pre-wrap; }
+.typing-cursor { display:inline-block; height:1em; border-left:2px solid var(--accent-secondary); vertical-align:text-bottom; animation: cursor-blink .8s steps(2,start) infinite; }
+@keyframes cursor-blink { to { opacity: 0; } }
+.stat-badge-1 { animation: float 4.8s ease-in-out infinite; }
+.stat-badge-2 { animation: float 5.6s -2.4s ease-in-out infinite; }
+
+/* Cards, controls and navigation receive restrained hover feedback. */
+.site-header { transition: box-shadow .35s ease-out, background-color .35s ease-out, border-color .35s ease-out; }
+.site-header.scrolled { background: var(--bg-glass); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.project-card { transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s ease-out, border-color .35s ease-out; }
+.project-card:hover { transform: translateY(-7px) perspective(900px) rotateX(1deg); box-shadow: var(--shadow-accent), var(--shadow-lg); }
+.btn-primary { background-size: 180% 180%; transition: transform .3s ease-out, box-shadow .3s ease-out, background-position .5s ease-out; }
+.btn-primary:hover { background-position: 100% 50%; }
+.btn-primary:active { transform: translateY(1px) scale(.98); }
+.social-icon-btn:hover { transform: translateY(-3px) rotate(5deg); }
+.theme-toggle-btn i { transition: transform .45s cubic-bezier(.16,1,.3,1); }
+.theme-toggle-btn:hover i { transform: rotate(35deg); }
+.form-input { transition: border-color .3s ease-out, box-shadow .3s ease-out, transform .3s ease-out; }
+.form-group:focus-within label { color: var(--accent-primary); transform: translateY(-2px); }
+.form-group label { transition: color .3s ease-out, transform .3s ease-out; }
+.scroll-top-btn { opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .35s ease-out, transform .35s ease-out, background-color .3s ease-out; }
+.scroll-top-btn.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.edu-timeline::before { transform: scaleY(0); transform-origin: top; transition: transform .9s cubic-bezier(.16,1,.3,1); }
+.edu-timeline.active::before { transform: scaleY(1); }
+.skill-category-card .skill-pill, .cert-card, .lang-card, .project-card, .edu-card { transition-delay: var(--reveal-delay, 0ms); }
+.skills-category-grid .skill-category-card:nth-child(2), .projects-grid .project-card:nth-child(2), .edu-timeline .edu-card:nth-child(2), .cert-list .cert-card:nth-child(2), .lang-list .lang-card:nth-child(2) { --reveal-delay: 100ms; }
+.skills-category-grid .skill-category-card:nth-child(3), .projects-grid .project-card:nth-child(3), .edu-timeline .edu-card:nth-child(3), .cert-list .cert-card:nth-child(3), .lang-list .lang-card:nth-child(3) { --reveal-delay: 200ms; }
+
+/* Reduced motion keeps content visible and removes decorative movement. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+  .hero-portrait { animation: none; }
+  .terminal-card, .terminal-card:hover { transform: none; }
+  .typing-cursor { display: none; }
+}
+
+/* Scroll progress marker follows the existing top progress bar. */
+#scroll-progress { overflow: visible; }
+#scroll-progress::after { content: ''; position: absolute; right: -5px; top: -3px; width: 9px; height: 9px; border-radius: 50%; background: #b7f7ce; box-shadow: 0 0 12px var(--accent-primary); }
+
+/* Skills appear in a quick cascade when their rendered category enters view. */
+.skill-category-card .skill-pill { opacity: 0; transform: translateY(8px); transition: opacity .45s ease-out, transform .45s cubic-bezier(.16,1,.3,1); transition-delay: calc(var(--chip-index, 0) * 70ms); }
+.skill-category-card.active .skill-pill { opacity: 1; transform: translateY(0); }
+
+/* Existing project banners gain a soft image-like reveal without adding external assets. */
+.project-card .project-banner { overflow: hidden; }
+.project-card .project-banner-pattern { transform: scale(1.12); opacity: .55; transition: transform .8s cubic-bezier(.16,1,.3,1), opacity .8s ease-out; }
+.project-card.active .project-banner-pattern { transform: scale(1); opacity: 1; }
+.project-card .project-icon-large { transform: translateY(8px) scale(.92); opacity: .5; transition: transform .65s cubic-bezier(.16,1,.3,1), opacity .65s ease-out; }
+.project-card.active .project-icon-large { transform: translateY(0) scale(1); opacity: 1; }
+
+/* Buttons move a few pixels toward desktop pointers. */
+.btn, .copy-email-btn { translate: var(--mag-x, 0px) var(--mag-y, 0px); transition: translate .3s cubic-bezier(.16,1,.3,1), transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease-out; }
+.send-confirmed { box-shadow: 0 0 0 3px rgba(34,197,94,.22), var(--shadow-accent); }
+
+/* Section navigation gives the current viewport a brief opacity transition. */
+body.section-transitioning main { animation: section-soften .42s ease-out; }
+@keyframes section-soften { 0% { opacity: .72; } 100% { opacity: 1; } }
+
+/* Ambient glow circles drift slowly behind the page content. */
+.ambient-circle-1 { animation: ambient-drift-one 18s ease-in-out infinite alternate; }
+.ambient-circle-2 { animation: ambient-drift-two 22s ease-in-out infinite alternate; }
+.ambient-circle-3 { animation: ambient-drift-three 20s ease-in-out infinite alternate; }
+@keyframes ambient-drift-one { to { transform: translate3d(-22px, 18px, 0) scale(1.04); } }
+@keyframes ambient-drift-two { to { transform: translate3d(24px, -16px, 0) scale(.96); } }
+@keyframes ambient-drift-three { to { transform: translate3d(-16px, -22px, 0) scale(1.03); } }
+
+/* Reduced motion removes new decorative movement and keeps all skill chips visible. */
+@media (prefers-reduced-motion: reduce) {
+  .skill-category-card .skill-pill { opacity: 1; transform: none; transition: none; }
+  .ambient-circle, body.section-transitioning main { animation: none; }
+  .btn, .copy-email-btn { translate: none; }
+  #scroll-progress::after { box-shadow: none; }
+  .terminal-char { opacity: 1; animation: none; }
+}
+
+/* Terminal text types as valid DOM characters while preserving its syntax colours. */
+.terminal-char { opacity: 0; animation: terminal-char-in .14s ease-out var(--char-delay, 0ms) forwards; }
+@keyframes terminal-char-in { to { opacity: 1; } }
+
+/* Focus rings make keyboard navigation easier to follow. */
+:where(a, button, input, textarea):focus-visible { outline: 2px solid var(--accent-secondary); outline-offset: 3px; }
+
+/* Desktop project cards softly illuminate beneath the pointer. */
+.project-card::after { content: ''; position: absolute; z-index: 0; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(240px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(34,197,94,.16), transparent 78%); transition: opacity .35s ease-out; }
+.project-card:hover::after { opacity: 1; }
+.project-card > * { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .project-card::after { transition: none; } }
+@media (max-width: 768px) { .hero-portrait { right: -8px; bottom: -18px; } }
 
 /* ==========================================================================
    TOAST NOTIFICATION
@@ -1668,4 +1798,25 @@ textarea.form-input {
   .contact-wrapper {
     padding: 2rem 1.25rem;
   }
+}
+
+/* Final animation overrides apply after base reveal rules and draw education progress. */
+.hero-content > .reveal:nth-child(1) { transition-delay: .05s; }
+.hero-content > .reveal:nth-child(2) { transition-delay: .15s; }
+.hero-content > .reveal:nth-child(3) { transition-delay: .25s; }
+.hero-content > .reveal:nth-child(4) { transition-delay: .35s; }
+.hero-content > .reveal:nth-child(5) { transition-delay: .45s; }
+.hero-content > .reveal:nth-child(6) { transition-delay: .55s; }
+.skills-category-grid .skill-category-card:nth-child(2), .projects-grid .project-card:nth-child(2), .edu-timeline .edu-card:nth-child(2), .cert-list .cert-card:nth-child(2), .lang-list .lang-card:nth-child(2) { transition-delay: 100ms; }
+.skills-category-grid .skill-category-card:nth-child(3), .projects-grid .project-card:nth-child(3), .edu-timeline .edu-card:nth-child(3), .cert-list .cert-card:nth-child(3), .lang-list .lang-card:nth-child(3) { transition-delay: 200ms; }
+.edu-timeline { position: relative; }
+.edu-timeline::before { content: ''; position: absolute; z-index: 0; top: 0; bottom: 0; left: 8px; width: 2px; background: var(--gradient-accent); opacity: .65; transform: scaleY(0); transform-origin: top; transition: transform .9s cubic-bezier(.16,1,.3,1); }
+.edu-timeline.active::before { transform: scaleY(1); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+  .hero-portrait { animation: none; }
+  .terminal-card, .terminal-card:hover { transform: none; }
+  .typing-cursor { display: none; }
+  .edu-timeline::before { transform: scaleY(1); }
 }
